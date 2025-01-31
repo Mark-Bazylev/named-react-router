@@ -1,0 +1,17 @@
+# .npmignore
+
+lib/
+
+.gitignore
+.vscode/
+node_modules/
+vite.config.*
+tsconfig*.json
+package-lock.json
+yarn.lock
+
+tests/
+scripts/
+
+.env
+*.log
