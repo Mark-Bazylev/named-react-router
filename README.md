@@ -2,7 +2,6 @@
 
 A lightweight extension to [React Router](https://reactrouter.com/) that provides **named routes** for simpler, more maintainable navigation.
 
----
 
 ## Features
 
@@ -10,7 +9,6 @@ A lightweight extension to [React Router](https://reactrouter.com/) that provide
 - **Hooks** for easy programmatic navigation (`useNamedNavigate`) and route-awareness (`useNamedLocation`)
 - **Nested routes** just like React Router, but with named references
 
----
 
 ## Installation
 
@@ -23,7 +21,6 @@ Or, with Yarn:
 ```
 yarn add named-react-router react-router-dom
 ```
----
 
 ## Usage
 
