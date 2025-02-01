@@ -5,8 +5,7 @@
   "module": "dist/named-react-router.es.js",
   "types": "dist/index.d.ts",
   "type": "module",
-
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "build": "vite build",
     "prepare": "vite build"
