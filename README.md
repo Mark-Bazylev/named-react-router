@@ -19,7 +19,7 @@ Install named-react-router along with react-router-dom (which it depends on):
 npm install named-react-router react-router-dom
 ```
 Or, with Yarn:
-```
+```bash
 yarn add named-react-router react-router-dom
 ```
 
@@ -29,7 +29,7 @@ yarn add named-react-router react-router-dom
 
 Use `createNamedBrowserRouter` to define your routes as an array of `NamedRouteObject`:
 
-```
+```javascript
 import { createNamedBrowserRouter } from "named-react-router";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
@@ -66,7 +66,7 @@ Then wrap your app with the returned router (similar to a standard React Router 
 ### Declarative Routing with `<NamedRoutes>`
    Alternatively, use the `<NamedRoutes>` and `<NamedRoute>` components for a JSX-based route definition.
 
-```
+```javascript
 import { NamedRoutes, NamedRoute } from "named-react-router";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
@@ -92,7 +92,7 @@ export function App() {
 
 Use the `useNamedNavigate` hook to navigate by route name instead of manually typed paths:
 
-```
+```javascript
 import { useNamedNavigate } from "named-react-router";
 
 export function GoToTeamButton() {
@@ -113,7 +113,7 @@ export function GoToTeamButton() {
 
 Use the `useNamedLocation` hook to get the current location plus an optional `name` property:
 
-```
+```javascript
 import { useNamedLocation } from "named-react-router";
 
 export function Breadcrumb() {
@@ -142,7 +142,7 @@ Creates a React Router browser router with named-route capabilities.
 
 Returns a function to navigate **by name** or by standard path.
 
-```
+```javascript
 const navigate = useNamedNavigate()
 
 navigate("some/path");
@@ -156,7 +156,7 @@ navigate({ name: RouteNames.team, params: { id: "123" }, query: { tab: "info" }
 
 **Only works with** `createNamedBrowserRouter`. Returns the standard `location` object plus a `name` property for the active named route.
 
-```
+```javascript
 const location = useNamedLocation();
 
 console.log(location.pathname); // "/about/team/123"
@@ -165,7 +165,7 @@ console.log(location.name); // "team"
 ### `<NamedRoutes/>`
 A wrapper component that replaces <Routes> and enables named-route navigation. It automatically collects named route definitions for use with `useNamedNavigate()`.
 
-```
+```javascript
 import { NamedRoutes, NamedRoute } from "named-react-router";
 
 <NamedRoutes>
@@ -182,6 +182,6 @@ Props:
 - **`path`** (string) – The path of the route.
 - **`element`** (ReactNode) – The component to render at this route.
 
-```
+```javascript
 <NamedRoute name={RouteNames.profile} path="profile/:id" element={<ProfilePage />} />
 ```
