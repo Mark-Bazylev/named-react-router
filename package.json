@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "type": "module",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "scripts": {
     "build": "vite build",
     "prepare": "vite build"
@@ -31,10 +31,11 @@
     "vite": "^6.0.5",
     "vite-plugin-dts": "^4.5.0"
   },
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://github.com/Mark-Bazylev/named-react-router/blob/main/LICENSE"
-  }
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Mark-Bazylev/named-react-router/blob/main/LICENSE"
+    }
   ],
   "keywords": [
     "react",
