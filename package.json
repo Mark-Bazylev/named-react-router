@@ -1,5 +1,13 @@
 {
   "name": "named-react-router",
+  "author": {
+    "name": "Mark Bazylev",
+    "url": "https://github.com/Mark-Bazylev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mark-Bazylev/named-react-router.git"
+  },
   "description": "A lightweight extension to React Router for named routes",
   "main": "dist/named-react-router.cjs.js",
   "module": "dist/named-react-router.es.js",
