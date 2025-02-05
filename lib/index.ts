@@ -38,14 +38,15 @@ export type NamedRouteObject = {
    */
   name?: string;
   /**
-   * The absolute path resolved by combining parent paths.
-   * Automatically populated by `collectRouteNames`.
-   */
-  absolutePath?: string;
-  /**
    * Nested children in the route hierarchy.
    */
   children?: NamedRouteObject[];
+  /**
+   * The absolute path resolved by combining parent paths.
+   * This is an internal property, automatically populated by `collectRouteNames`.
+   * Not intended for external modification.
+   */
+  __absolutePath?: string;
   /**
    * Optional additional metadata for this route.
    */
@@ -87,7 +88,7 @@ function collectRouteNames(
     }
     // If route is named, store it in the map
     if (route.name) {
-      route.absolutePath = absolutePath;
+      route.__absolutePath = absolutePath;
       const existingRoute = namedRoutesMap.get(route.name);
       if (existingRoute) {
         throw new Error(
@@ -190,9 +191,9 @@ function useNamedNavigate() {
       const { name, params, query } = to;
 
       const namedRoute = namedRoutesMap.get(name);
-      if (namedRoute?.absolutePath) {
+      if (namedRoute?.__absolutePath) {
         // Replace dynamic segments with provided params
-        let filledNamedPath = generatePath(namedRoute.absolutePath, params);
+        let filledNamedPath = generatePath(namedRoute.__absolutePath, params);
 
         // Append query string if any
         if (query) {
