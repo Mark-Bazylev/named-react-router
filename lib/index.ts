@@ -1,5 +1,6 @@
 import {
   createBrowserRouter,
+  generatePath,
   Location,
   NavigateOptions,
   RouteObject,
@@ -190,14 +191,8 @@ function useNamedNavigate() {
 
       const namedRoute = namedRoutesMap.get(name);
       if (namedRoute?.absolutePath) {
-        let filledNamedPath = namedRoute.absolutePath;
-
         // Replace dynamic segments with provided params
-        if (params) {
-          Object.entries(params).forEach(([key, value]) => {
-            filledNamedPath = filledNamedPath.replace(`/:${key}`, `/${value}`);
-          });
-        }
+        let filledNamedPath = generatePath(namedRoute.absolutePath, params);
 
         // Append query string if any
         if (query) {
