@@ -1,7 +1,10 @@
 # .npmignore
 
 lib/
-
+*.tgz
+.idea/
+eslint.config.js
+.gitattributes
 .gitignore
 .vscode/
 node_modules/
