@@ -91,7 +91,7 @@ function collectRouteNames(
       route.__absolutePath = absolutePath;
       const existingRoute = namedRoutesMap.get(route.name);
       if (existingRoute) {
-        throw new Error(
+        console.warn(
           `Duplicate route name: ${route.name} found. Use unique names.`,
         );
       }
