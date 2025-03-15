@@ -52,7 +52,7 @@ export type NamedRouteObject = {
    */
 } & RouteObject;
 
-type JunctionTo = To | NamedTo;
+export type JunctionTo = To | NamedTo;
 
 /**
  * Type guard that checks whether the provided value is a NamedTo object.
@@ -90,9 +90,9 @@ function collectRouteNames(
     if (route.name) {
       route.__absolutePath = absolutePath;
       const existingRoute = namedRoutesMap.get(route.name);
-      if (existingRoute) {
+      if (process.env.NODE_ENV === "development" && existingRoute) {
         console.warn(
-          `Duplicate route name: ${route.name} found. Use unique names.`,
+          `Development mode warning: Duplicate route name: ${route.name} found. Use unique names. Possible caused by HMR. if so, you can ignore this warning`,
         );
       }
       namedRoutesMap.set(route.name, route);
@@ -187,28 +187,8 @@ function useNamedNavigate() {
    * @param options - Navigation options (replace, state, etc).
    */
   function namedNavigateFunction(to: JunctionTo, options?: NavigateOptions) {
-    if (isNamedTo(to)) {
-      const { name, params, query } = to;
-
-      const namedRoute = namedRoutesMap.get(name);
-      if (namedRoute?.__absolutePath) {
-        // Replace dynamic segments with provided params
-        let filledNamedPath = generatePath(namedRoute.__absolutePath, params);
-
-        // Append query string if any
-        if (query) {
-          const queryString = new URLSearchParams(query).toString();
-          filledNamedPath += `?${queryString}`;
-        }
-
-        navigate(filledNamedPath, options);
-      } else {
-        throw new Error(`Route name: ${name} not found.`);
-      }
-    } else {
-      // Standard path/string-based navigation
-      navigate(to, options);
-    }
+    const filledNamedPath = __namedToFilledPath(to);
+    navigate(filledNamedPath, options);
   }
 
   return namedNavigateFunction;
@@ -246,6 +226,30 @@ function useNamedLocation(): Location & { name?: string } {
     }
   }
   return location;
+}
+
+export function __namedToFilledPath(to: JunctionTo) {
+  if (isNamedTo(to)) {
+    const { name, params, query } = to;
+
+    const namedRoute = namedRoutesMap.get(name);
+    if (namedRoute?.__absolutePath) {
+      // Replace dynamic segments with provided params
+      let filledNamedPath = generatePath(namedRoute.__absolutePath, params);
+
+      // Append query string if any
+      if (query) {
+        const queryString = new URLSearchParams(query).toString();
+        filledNamedPath += `?${queryString}`;
+      }
+
+      return filledNamedPath;
+    } else {
+      throw new Error(`Route name: ${name} not found.`);
+    }
+  } else {
+    return to;
+  }
 }
 
 export {
