@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), dtsPlugin()],
   build: {
     lib: {
-      entry: "lib/index.ts",
+      entry: "lib/index.tsx",
       name: "NamedReactRouter",
       fileName: (format) => `named-react-router.${format}.js`,
       formats: ["es", "cjs"],
