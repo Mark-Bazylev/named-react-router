@@ -34,4 +34,3 @@ export function NamedNavLink({ to, ...navLinkProps }: NamedNavLinkProps) {
 
   return <NavLink to={path} {...navLinkProps} />;
 }
-
