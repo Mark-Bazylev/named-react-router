@@ -1,5 +1,5 @@
 import { NavLink, NavLinkProps } from "react-router-dom";
-import { JunctionTo, __namedToFilledPath } from "./index";
+import { JunctionTo, __namedToFilledPath } from "../index";
 import { useMemo } from "react";
 
 interface NamedNavLinkProps extends Omit<NavLinkProps, "to"> {

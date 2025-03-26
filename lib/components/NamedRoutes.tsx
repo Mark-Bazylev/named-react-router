@@ -1,7 +1,7 @@
 import { Route, Routes, RoutesProps } from "react-router-dom";
 import { Fragment, ReactElement, useEffect } from "react";
 import { NamedRoute } from "./NamedRoute";
-import { collectRouteNames, NamedRouteObject } from "./index";
+import { collectRouteNames, NamedRouteObject } from "../index";
 
 /**
  * Props for the NamedRoutes component.

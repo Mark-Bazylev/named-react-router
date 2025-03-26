@@ -9,9 +9,6 @@ import {
   useMatches,
   useNavigate,
 } from "react-router-dom";
-import { NamedNavLink } from "./NamedNavLink";
-import { NamedRoute } from "./NamedRoute";
-import { NamedRoutes } from "./NamedRoutes";
 
 /**
  * An object that represents a named route navigation intent.
@@ -261,7 +258,8 @@ export {
   useNamedNavigate,
   useNamedLocation,
   collectRouteNames,
-  NamedNavLink,
-  NamedRoute,
-  NamedRoutes,
 };
+
+export { NamedRoute } from "./components/NamedRoute";
+export { NamedRoutes } from "./components/NamedRoutes";
+export { NamedNavLink } from "./components/NamedNavLink";
